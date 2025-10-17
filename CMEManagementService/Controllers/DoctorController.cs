@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using CMEManagementService.Models;
-using CMEManagementService.Models.Entites;
 using CMEManagementService.Services;
 using CMEManagementService.Models.DTO;
 

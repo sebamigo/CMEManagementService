@@ -1,5 +1,3 @@
-using Microsoft.Extensions.DependencyInjection;
-using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using CMEManagementService.Services;
 

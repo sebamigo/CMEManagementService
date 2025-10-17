@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using CMEManagementService.Configurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -5,8 +6,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.AddAppDependencies();
-builder.Services.AddControllers();
-builder.Services.AddOpenApiDocument();
+builder.Services
+    .AddOpenApiDocument(config =>
+    {
+        config.SchemaSettings.GenerateEnumMappingDescription = true;
+    })
+    .AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
 var app = builder.Build();
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -14,8 +15,7 @@ namespace CMEManagementService.Migrations
                 name: "EducationCourses",
                 columns: table => new
                 {
-                    EducationCourseId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true)
+                    EducationCourseId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,8 +26,7 @@ namespace CMEManagementService.Migrations
                 name: "Personnel",
                 columns: table => new
                 {
-                    PersonnelId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                    PersonnelId = table.Column<Guid>(type: "TEXT", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     Email = table.Column<string>(type: "TEXT", nullable: false),

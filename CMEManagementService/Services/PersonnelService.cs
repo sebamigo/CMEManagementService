@@ -2,7 +2,7 @@ using AutoMapper;
 using CMEManagementService.Configurations;
 using CMEManagementService.Extensions;
 using CMEManagementService.Models.DTO;
-using CMEManagementService.Models.Entites;
+using CMEManagementService.Models.Entities;
 
 namespace CMEManagementService.Services
 {

@@ -1,4 +1,4 @@
-using CMEManagementService.Models.Entites;
+using CMEManagementService.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 

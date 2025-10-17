@@ -30,9 +30,16 @@ public class CourseController(ILogger<CourseController> logger, ICourseService c
     }
 
     [HttpPost("{courseId:guid}/participants")]
-    public async Task<IActionResult> AssignParticipantToCourse(Guid courseId,[FromBody] AssignPersonnelToCourseDTO assignPersonnelToCourseDTO)
+    public async Task<IActionResult> AssignParticipantToCourse(Guid courseId, [FromBody] AssignPersonnelToCourseDTO assignPersonnelToCourseDTO)
     {
         await courseService.AssignParticipantToCourseAsync(courseId, assignPersonnelToCourseDTO);
         return Ok(new { Message = "Participants assigned to course successfully." });
+    }
+
+    [HttpPost("{courseId:guid}/completed")]
+    public async Task<IActionResult> CourseHasCompleted(Guid courseId)
+    {
+        await courseService.CourseHasCompleted(courseId);
+        return Ok(new { Message = "Course has completed." });
     }
 }

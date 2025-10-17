@@ -1,4 +1,4 @@
-namespace CMEManagementService.Models.Entites
+namespace CMEManagementService.Models.Entities
 {
     public class Nurse : Personnel
     {

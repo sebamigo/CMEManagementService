@@ -1,4 +1,4 @@
-namespace CMEManagementService.Models.Entites
+namespace CMEManagementService.Models.Entities
 {
     public class PersonnelParticipation
     {
@@ -6,6 +6,6 @@ namespace CMEManagementService.Models.Entites
         public Personnel Personnel { get; set; }
         public Guid EducationCourseId { get; set; }
         public EducationCourse EducationCourse { get; set; }
-        public int NumberOfParticipations { get; set; }
+        public bool HasCompleted { get; set; } = false;
     }
 }

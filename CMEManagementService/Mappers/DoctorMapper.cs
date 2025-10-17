@@ -6,7 +6,7 @@ namespace CMEManagementService.Mappers
     {
         public DoctorMapper()
         {
-            CreateMap<Models.DTO.CreateDoctorDTO, Models.Entites.Doctor>()
+            CreateMap<Models.DTO.CreateDoctorDTO, Models.Entities.Doctor>()
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))

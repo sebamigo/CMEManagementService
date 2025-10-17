@@ -1,6 +1,6 @@
 using AutoMapper;
 using CMEManagementService.Models.DTO;
-using CMEManagementService.Models.Entites;
+using CMEManagementService.Models.Entities;
 
 namespace CMEManagementService.Mappers
 {

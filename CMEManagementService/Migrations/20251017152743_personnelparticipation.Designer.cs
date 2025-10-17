@@ -20,7 +20,7 @@ namespace CMEManagementService.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.EducationCourse", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.EducationCourse", b =>
                 {
                     b.Property<Guid>("EducationCourseId")
                         .ValueGeneratedOnAdd()
@@ -31,7 +31,7 @@ namespace CMEManagementService.Migrations
                     b.ToTable("EducationCourses");
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.Personnel", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.Personnel", b =>
                 {
                     b.Property<Guid>("PersonnelId")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace CMEManagementService.Migrations
                     b.UseTphMappingStrategy();
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.PersonnelParticipation", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.PersonnelParticipation", b =>
                 {
                     b.Property<Guid>("PersonnelId")
                         .HasColumnType("TEXT");
@@ -81,9 +81,9 @@ namespace CMEManagementService.Migrations
                     b.ToTable("PersonnelParticipations");
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.Doctor", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.Doctor", b =>
                 {
-                    b.HasBaseType("CMEManagementService.Models.Entites.Personnel");
+                    b.HasBaseType("CMEManagementService.Models.Entities.Personnel");
 
                     b.Property<string>("LicenseNumber")
                         .IsRequired()
@@ -96,9 +96,9 @@ namespace CMEManagementService.Migrations
                     b.HasDiscriminator().HasValue("Doctor");
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.Nurse", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.Nurse", b =>
                 {
-                    b.HasBaseType("CMEManagementService.Models.Entites.Personnel");
+                    b.HasBaseType("CMEManagementService.Models.Entities.Personnel");
 
                     b.Property<string>("Certification")
                         .IsRequired()
@@ -107,15 +107,15 @@ namespace CMEManagementService.Migrations
                     b.HasDiscriminator().HasValue("Nurse");
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.PersonnelParticipation", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.PersonnelParticipation", b =>
                 {
-                    b.HasOne("CMEManagementService.Models.Entites.EducationCourse", "EducationCourse")
+                    b.HasOne("CMEManagementService.Models.Entities.EducationCourse", "EducationCourse")
                         .WithMany("Participations")
                         .HasForeignKey("EducationCourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CMEManagementService.Models.Entites.Personnel", "Personnel")
+                    b.HasOne("CMEManagementService.Models.Entities.Personnel", "Personnel")
                         .WithMany("Participations")
                         .HasForeignKey("PersonnelId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -126,12 +126,12 @@ namespace CMEManagementService.Migrations
                     b.Navigation("Personnel");
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.EducationCourse", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.EducationCourse", b =>
                 {
                     b.Navigation("Participations");
                 });
 
-            modelBuilder.Entity("CMEManagementService.Models.Entites.Personnel", b =>
+            modelBuilder.Entity("CMEManagementService.Models.Entities.Personnel", b =>
                 {
                     b.Navigation("Participations");
                 });

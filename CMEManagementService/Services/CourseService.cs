@@ -2,7 +2,7 @@ using AutoMapper;
 using CMEManagementService.Configurations;
 using CMEManagementService.Exceptions;
 using CMEManagementService.Models.DTO;
-using CMEManagementService.Models.Entites;
+using CMEManagementService.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CMEManagementService.Services
@@ -10,6 +10,7 @@ namespace CMEManagementService.Services
     public interface ICourseService
     {
         Task AssignParticipantToCourseAsync(Guid courseId, AssignPersonnelToCourseDTO assignPersonnelToCourseDTO);
+        Task CourseHasCompleted(Guid courseId);
         Task<EducationCourse> CreateEducationCourseAsync(CreateEducationCourseDTO createEducationCourseDto);
         Task<IEnumerable<EducationCourse>> GetAllEducationCoursesAsync();
         Task<EducationCourse?> GetEducationCourseByIdAsync(Guid id);
@@ -38,6 +39,18 @@ namespace CMEManagementService.Services
             }
 
             dbContext.EducationCourses.Update(educationCourse);
+            await dbContext.SaveChangesAsync();
+        }
+
+        public async Task CourseHasCompleted(Guid courseId)
+        {
+            var participants = await dbContext.PersonnelParticipations
+                .Where(pp => pp.EducationCourseId == courseId)
+                .ToListAsync();
+
+            participants.ForEach(pp => pp.HasCompleted = true);
+            
+            dbContext.PersonnelParticipations.UpdateRange(participants);
             await dbContext.SaveChangesAsync();
         }
 

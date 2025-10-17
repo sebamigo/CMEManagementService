@@ -10,6 +10,7 @@ namespace CMEManagementService.Configurations
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             builder.Services.AddScoped<IPersonnelService, PersonnelService>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
             
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));

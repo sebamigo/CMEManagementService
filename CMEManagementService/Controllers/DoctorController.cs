@@ -12,7 +12,6 @@ public class DoctorController(ILogger<DoctorController> logger, IPersonnelServic
     public async Task<IActionResult> CreateDoctor([FromBody] CreateDoctorDTO createDoctor)
     {
         var doctor = await personnelService.CreateDoctorAsync(createDoctor);
-
         return Ok(new { Message = "Doctor created successfully", Doctor = doctor });
     }
 

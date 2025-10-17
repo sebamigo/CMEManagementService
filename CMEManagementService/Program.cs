@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using CMEManagementService.Configurations;
+using CMEManagementService.Middlewares;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +20,7 @@ builder.Services
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseOpenApi();
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
     dbContext.Database.Migrate();
 }
 
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.MapControllers();

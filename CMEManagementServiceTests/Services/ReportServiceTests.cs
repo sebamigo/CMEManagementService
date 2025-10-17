@@ -14,7 +14,7 @@ namespace CMEManagementServiceTests.Services
         public ReportServiceTests()
         {
             var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString()) // Wichtig: Eindeutiger Name für jede Test-Instanz
+                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
                 .Options;
             _dbContext = new AppDbContext(options);
 

@@ -1,6 +1,7 @@
 using CMEManagementService.Configurations;
 using CMEManagementService.Models.Entities;
 using CMEManagementService.Services;
+using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 
 namespace CMEManagementServiceTests.Services
@@ -51,19 +52,19 @@ namespace CMEManagementServiceTests.Services
             var report2 = await _reportService.GenerateEducationReportBySpecialtyAsync("Neurochirurgie");
 
             // Assert
-            Assert.NotNull(report1);
-            Assert.Equal("Kardiologie", report1.Specialty);
-            Assert.Equal(20, report1.TotalContinuingEducationPoints);
-            Assert.Equal(1, report1.NumberOfAttendedCourses);
-            Assert.Equal(1, report1.NumberOfDoctors);
-            Assert.Equal(20.0, report1.AveragePointsPerDoctor);
+            report1.Should().NotBeNull();
+            report1.Specialty.Should().Be("Kardiologie");
+            report1.TotalContinuingEducationPoints.Should().Be(20);
+            report1.NumberOfAttendedCourses.Should().Be(1);
+            report1.NumberOfDoctors.Should().Be(1);
+            report1.AveragePointsPerDoctor.Should().Be(20.0);
 
-            Assert.NotNull(report2);
-            Assert.Equal("Neurochirurgie", report2.Specialty);
-            Assert.Equal(30, report2.TotalContinuingEducationPoints);
-            Assert.Equal(1, report2.NumberOfAttendedCourses);
-            Assert.Equal(1, report2.NumberOfDoctors);
-            Assert.Equal(30.0, report2.AveragePointsPerDoctor);
+            report2.Should().NotBeNull();
+            report2.Specialty.Should().Be("Neurochirurgie");
+            report2.TotalContinuingEducationPoints.Should().Be(30);
+            report2.NumberOfAttendedCourses.Should().Be(1);
+            report2.NumberOfDoctors.Should().Be(1);
+            report2.AveragePointsPerDoctor.Should().Be(30.0);
         }
     }
 }
